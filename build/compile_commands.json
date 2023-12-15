@@ -1,0 +1,74 @@
+[
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/protocols/own_hhe.cpp.o -c /home/akseli/Desktop/HHE4.0/protocols/own_hhe.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/protocols/own_hhe.cpp",
+  "output": "CMakeFiles/own-hhe.dir/protocols/own_hhe.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/src/SEAL_Cipher.cpp.o -c /home/akseli/Desktop/HHE4.0/src/SEAL_Cipher.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/src/SEAL_Cipher.cpp",
+  "output": "CMakeFiles/own-hhe.dir/src/SEAL_Cipher.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/src/pasta_3_seal.cpp.o -c /home/akseli/Desktop/HHE4.0/src/pasta_3_seal.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/src/pasta_3_seal.cpp",
+  "output": "CMakeFiles/own-hhe.dir/src/pasta_3_seal.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/src/pasta_3_plain.cpp.o -c /home/akseli/Desktop/HHE4.0/src/pasta_3_plain.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/src/pasta_3_plain.cpp",
+  "output": "CMakeFiles/own-hhe.dir/src/pasta_3_plain.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/src/utils.cpp.o -c /home/akseli/Desktop/HHE4.0/src/utils.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/src/utils.cpp",
+  "output": "CMakeFiles/own-hhe.dir/src/utils.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/src -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -I/home/akseli/Desktop/HHE4.0/util/aes -isystem /home/akseli/Desktop/HHE4.0/libs/seal/include/SEAL-4.0 -std=gnu++17 -msse2 -maes -o CMakeFiles/own-hhe.dir/src/config.cpp.o -c /home/akseli/Desktop/HHE4.0/src/config.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/src/config.cpp",
+  "output": "CMakeFiles/own-hhe.dir/src/config.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util",
+  "command": "/usr/bin/cc -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util -msse2 -maes -o CMakeFiles/perf.dir/perf.c.o -c /home/akseli/Desktop/HHE4.0/util/perf.c",
+  "file": "/home/akseli/Desktop/HHE4.0/util/perf.c",
+  "output": "util/CMakeFiles/perf.dir/perf.c.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util/keccak",
+  "command": "/usr/bin/cc -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -msse2 -maes -o CMakeFiles/keccak.dir/KeccakSpongeWidth1600.c.o -c /home/akseli/Desktop/HHE4.0/util/keccak/KeccakSpongeWidth1600.c",
+  "file": "/home/akseli/Desktop/HHE4.0/util/keccak/KeccakSpongeWidth1600.c",
+  "output": "util/keccak/CMakeFiles/keccak.dir/KeccakSpongeWidth1600.c.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util/keccak",
+  "command": "/usr/bin/cc -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -msse2 -maes -o CMakeFiles/keccak.dir/KeccakHash.c.o -c /home/akseli/Desktop/HHE4.0/util/keccak/KeccakHash.c",
+  "file": "/home/akseli/Desktop/HHE4.0/util/keccak/KeccakHash.c",
+  "output": "util/keccak/CMakeFiles/keccak.dir/KeccakHash.c.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util/keccak",
+  "command": "/usr/bin/cc -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util/keccak -I/home/akseli/Desktop/HHE4.0/util/keccak/avx2 -msse2 -maes -o CMakeFiles/keccak.dir/avx2/KeccakP-1600-AVX2.s.o -c /home/akseli/Desktop/HHE4.0/util/keccak/avx2/KeccakP-1600-AVX2.s",
+  "file": "/home/akseli/Desktop/HHE4.0/util/keccak/avx2/KeccakP-1600-AVX2.s",
+  "output": "util/keccak/CMakeFiles/keccak.dir/avx2/KeccakP-1600-AVX2.s.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util/aes",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util/aes -std=gnu++17 -msse2 -maes -o CMakeFiles/aes.dir/aes.cpp.o -c /home/akseli/Desktop/HHE4.0/util/aes/aes.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/util/aes/aes.cpp",
+  "output": "util/aes/CMakeFiles/aes.dir/aes.cpp.o"
+},
+{
+  "directory": "/home/akseli/Desktop/HHE4.0/build/util/aes",
+  "command": "/usr/bin/c++ -DOC_ENABLE_AESNI -DOC_ENABLE_SSE2 -I/home/akseli/Desktop/HHE4.0/util/aes -std=gnu++17 -msse2 -maes -o CMakeFiles/aes.dir/block.cpp.o -c /home/akseli/Desktop/HHE4.0/util/aes/block.cpp",
+  "file": "/home/akseli/Desktop/HHE4.0/util/aes/block.cpp",
+  "output": "util/aes/CMakeFiles/aes.dir/block.cpp.o"
+}
+]

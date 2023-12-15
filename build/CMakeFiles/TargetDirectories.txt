@@ -1,0 +1,12 @@
+/home/akseli/Desktop/HHE4.0/build/CMakeFiles/own-hhe.dir
+/home/akseli/Desktop/HHE4.0/build/CMakeFiles/edit_cache.dir
+/home/akseli/Desktop/HHE4.0/build/CMakeFiles/rebuild_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/CMakeFiles/perf.dir
+/home/akseli/Desktop/HHE4.0/build/util/CMakeFiles/edit_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/CMakeFiles/rebuild_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/keccak/CMakeFiles/keccak.dir
+/home/akseli/Desktop/HHE4.0/build/util/keccak/CMakeFiles/edit_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/keccak/CMakeFiles/rebuild_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/aes/CMakeFiles/aes.dir
+/home/akseli/Desktop/HHE4.0/build/util/aes/CMakeFiles/edit_cache.dir
+/home/akseli/Desktop/HHE4.0/build/util/aes/CMakeFiles/rebuild_cache.dir
