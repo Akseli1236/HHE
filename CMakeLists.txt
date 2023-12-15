@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 find_package(SEAL 4.0.0 EXACT REQUIRED)
 
+
 include(CheckCCompilerFlag)
 function(check_c_compiler_flag_and_add flag result)
   check_c_compiler_flag("${flag}" ${result})
@@ -41,6 +42,7 @@ add_subdirectory(util)
 
 include_directories(/usr/local/include)
 include_directories(src)
+include_directories(cryptopp)
 link_directories(/usr/local/lib)
 
 # --------------- Create the Executables for Testing ---------------------------
@@ -57,7 +59,9 @@ target_sources(own-hhe
             src/pasta_3_plain.cpp
             src/utils.cpp
             src/config.cpp
+            
 )
 
 # --------------------------- Specify libraries or flags to use when linking a given target and/or its dependents ----------------
-target_link_libraries(own-hhe SEAL::seal keccak aes)
+
+target_link_libraries(own-hhe SEAL::seal keccak aes cryptopp)

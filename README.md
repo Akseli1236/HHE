@@ -1,3 +1,5 @@
+sudo apt-get install libcrypto++-dev
+
 # HHE-PPML: Privacy-Preserving Machine Learning Through Hybrid Homomorphic Encryption
 A Privacy-Preserving Machine Learning (PPML) protocol that is resource friendly to edge devices using Hybrid Homomorphic Encryption (HHE). It is built on top of the [SEAL](https://github.com/microsoft/SEAL) (for HE) and [PASTA](https://github.com/IAIK/hybrid-HE-framework) (for HHE) libraries.
 
