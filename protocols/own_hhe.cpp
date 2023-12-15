@@ -64,7 +64,7 @@ void csp(std::vector<Ciphertext> enc_key,
     size_t total_decomposition_time = 0;  
     size_t total_eval_time = 0;
     Ciphertext RandomCipher;
-    for (int i = 0; i < 200; i++){
+    for (int i = 0; i < 1; i++){
         Evaluator analyst_he_eval(*context);
         chrono::high_resolution_clock::time_point start1, start2, end1, end2;
         chrono::milliseconds diff1, diff2;
