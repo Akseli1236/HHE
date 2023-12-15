@@ -120,7 +120,7 @@ void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInsta
 
     std::vector<uint64_t> cipherData;
     std::vector<Ciphertext> enc_key;
-    for (int i = 0; i < 200; i++){
+    for (int i = 0; i < 1; i++){
 
         //Time symmetric encryptio
         start1 = chrono::high_resolution_clock::now();
@@ -241,7 +241,7 @@ int main(){
     
     diff2 = chrono::duration_cast<chrono::milliseconds>(end2 - start2);
 
-    cout << "CSPKEYGEN: " << diff1.count() << "\n" << "ANALYST: " << diff2.count() << endl;  
+    cout << "RSA KeyPair: " << diff1.count() << "\n" << "ANALYST: " << diff2.count() << endl;  
 
 
     //Decryption message and encryptin it
