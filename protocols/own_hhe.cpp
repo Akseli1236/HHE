@@ -11,7 +11,6 @@
 #include "../src/pasta_3_seal.h"
 #include "../src/utils.h"
 #include "../src/sealhelper.h"
-#include "../openssl/rsa.h"
 
 #include "../crypto++/cryptlib.h" // Crypto++ for the RSA
 #include "../crypto++/rsa.h"
