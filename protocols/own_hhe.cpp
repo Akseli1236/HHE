@@ -13,7 +13,7 @@
 #include "../src/sealhelper.h"
 #include "../openssl/rsa.h"
 
-#include "../crypto++/cryptlib.h"
+#include "../crypto++/cryptlib.h" // Crypto++ for the RSA
 #include "../crypto++/rsa.h"
 #include "../crypto++/osrng.h"
 #include "../crypto++/base64.h"
@@ -41,6 +41,8 @@ void analyst(std::vector<Ciphertext> EvalCiphers, PASTA_3_MODIFIED_1::PASTA_SEAL
     for (int i = 0; i < 1; i++){
         chrono::high_resolution_clock::time_point start1, end1;
         chrono::milliseconds diff1;
+
+        //Time to decrypt
         start1 = chrono::high_resolution_clock::now();
 
         std::vector<uint64_t> dec = pastaSealInstance.decrypt_result(EvalCiphers, config::USE_BATCH);
@@ -48,16 +50,9 @@ void analyst(std::vector<Ciphertext> EvalCiphers, PASTA_3_MODIFIED_1::PASTA_SEAL
         end1 = chrono::high_resolution_clock::now();
         diff1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1);
         total_decrypt_time += diff1.count();
-        cout << "Decrypt result time: " << diff1.count() << endl;
 
     }
     cout << "Total Decrypt result time: " << total_decrypt_time << endl;
-    
-    //CSP csp;
-    //AnalystD anal;
-    
-
-     //csp.dummy = encrypting(anal.analyst_he_relin_keys, anal.analyst_he_public_key, anal.analyst_he_benc, anal.analyst_he_enc);
     
 
 }
@@ -68,11 +63,12 @@ void csp(std::vector<Ciphertext> enc_key,
     size_t total_decomposition_time = 0;  
     size_t total_eval_time = 0;
     Ciphertext RandomCipher;
-    for (int i = 0; i < 1; i++){
+    for (int i = 0; i < 200; i++){
         Evaluator analyst_he_eval(*context);
         chrono::high_resolution_clock::time_point start1, start2, end1, end2;
         chrono::milliseconds diff1, diff2;
 
+        //Time Decomposition
         start1 = chrono::high_resolution_clock::now();
 
         CSP csp;
@@ -83,6 +79,7 @@ void csp(std::vector<Ciphertext> enc_key,
         diff1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1);
         total_decomposition_time += diff1.count();
 
+        //Time EVAL
         start2 = chrono::high_resolution_clock::now();
         
         packed_enc_multiply(HECipher[0],HECipher[0],RandomCipher, analyst_he_eval);
@@ -91,25 +88,39 @@ void csp(std::vector<Ciphertext> enc_key,
         diff2 = chrono::duration_cast<chrono::milliseconds>(end2 - start2);
 
         total_eval_time += diff2.count();
+        if (i == 50 or i == 100 or i == 150){
+            cout << "Total Decomposition time: " << total_decomposition_time << " : " << i << endl;
+            cout << "Total Eval time: " << total_eval_time << " : " << i << endl; 
+        }
+        
 
     }
-    cout << "Decomposition time: " << total_decomposition_time << endl;
-    cout << "Eval time: " << total_eval_time << endl;    
+    cout << "Total Decomposition time: " << total_decomposition_time << endl;
+    cout << "Total Eval time: " << total_eval_time << endl;
+
     std::vector<Ciphertext> EvalCiphers = {RandomCipher};
     analyst(EvalCiphers, pastaSealInstance);
+
+    //Send cipher to analyst
+    
 
 }
 
 void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInstance){
-    chrono::high_resolution_clock::time_point start1, start2, end1, end2;
-    chrono::milliseconds diff1, diff2;
+    chrono::high_resolution_clock::time_point start1, start2, start3, end1, end2, end3;
+    chrono::milliseconds diff1, diff2, diff3;
 
 
     size_t total_symmetric_enc_time = 0;  
     size_t total_key_enc_time = 0;
+    size_t total_only_HE_time = 0;
+
+
     std::vector<uint64_t> cipherData;
     std::vector<Ciphertext> enc_key;
-    for (int i = 0; i < 1; i++){
+    for (int i = 0; i < 200; i++){
+
+        //Time symmetric encryptio
         start1 = chrono::high_resolution_clock::now();
         PASTA_3_MODIFIED_1::PASTA Symmetric_Encryptor(ssk, config::plain_mod);
         vector<uint64_t> userData = create_random_vector(4);
@@ -120,29 +131,42 @@ void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInsta
         diff1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1);
         total_symmetric_enc_time += diff1.count(); 
 
-        start2 = chrono::high_resolution_clock::now();
+        
+        
+
+        //Encryt user data with HE and the time it takes
+        start3 = chrono::high_resolution_clock::now();
 
         
-        enc_key = pastaSealInstance.encrypt_key_2(ssk, config::USE_BATCH);
+        enc_key = pastaSealInstance.encrypt_key_2(userData, config::USE_BATCH);
         
-        end2 = chrono::high_resolution_clock::now();
-        diff2 = chrono::duration_cast<chrono::milliseconds>(end2 - start2);
-        total_key_enc_time += diff2.count();
+        end3 = chrono::high_resolution_clock::now();
+        diff3 = chrono::duration_cast<chrono::milliseconds>(end3 - start3);
+        total_only_HE_time += diff3.count();
+        
         
 
     }
-    cout << "Average symmetric encryption time: " << total_symmetric_enc_time / 1 << endl;
-    cout << "Average key encryption time: " << total_key_enc_time / 1 << endl;
-    csp(enc_key, cipherData, pastaSealInstance);
+    
+    //Time to HE for symmetric key
+    start2 = chrono::high_resolution_clock::now();
 
+        
+    enc_key = pastaSealInstance.encrypt_key_2(ssk, config::USE_BATCH);
+    
+    end2 = chrono::high_resolution_clock::now();
+    diff2 = chrono::duration_cast<chrono::milliseconds>(end2 - start2);
+    total_key_enc_time += diff2.count();
+
+
+    cout << "Total symmetric encryption time: " << total_symmetric_enc_time / 1 << endl;
+    cout << "Total key encryption time: " << total_key_enc_time / 1 << endl;
+    cout << "Total HE time: " << total_only_HE_time / 1 << endl;
+    //csp(enc_key, cipherData, pastaSealInstance);
+
+    //Call CSP with enc_key and cipher data
     
 
-    
-
-    
-    //BatchEncoder analyst_he_benc(*context);
-    //Encryptor analyst_he_enc(*context, analyst_he_public_key);
-    //auto encrypted_key = encrypt_symmetric_key(ssk, config::USE_BATCH, analyst_he_benc, analyst_he_enc);
     
 
 }
@@ -164,6 +188,7 @@ int main(){
     seal::sec_level_type sec = seal::sec_level_type::tc128;
     context = std::make_shared<seal::SEALContext>(params, true, sec);
 
+    //Time the RSA key generation
     start1 = chrono::high_resolution_clock::now();
     CryptoPP::AutoSeededRandomPool rng;
     // Create private key
@@ -203,8 +228,7 @@ int main(){
     
     analyst_keygen.create_public_key(analyst_he_public_key);
     analyst_keygen.create_relin_keys(analyst_he_relin_keys);
-    
-                                      //HHE Decryption Secret Key                               //HHE RelinKey
+
     
     BatchEncoder analyst_he_benc(*context);
     Encryptor analyst_he_enc(*context, analyst_he_public_key);
@@ -243,8 +267,6 @@ int main(){
     PASTA_3_MODIFIED_1::PASTA_SEAL pastaSealInstance(context, analyst_he_public_key, CSP_secret_key,
     analyst_he_relin_keys, analyst_he_galois_keys);
     client(s_secret_key, pastaSealInstance);
-    //cout << "ssk.size() = " << s_secret_key.size() << endl;
-    //print_vec(s_secret_key, s_secret_key.size(), "sk");
     return 0;
 }
 
