@@ -35,7 +35,7 @@ struct CSP{
     SecretKey he_secretKey;
 
 };
-
+//Represents the analyst
 void analyst(std::vector<Ciphertext> EvalCiphers, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInstance){
     size_t total_decrypt_time = 0;  
     for (int i = 0; i < 1; i++){
@@ -57,6 +57,7 @@ void analyst(std::vector<Ciphertext> EvalCiphers, PASTA_3_MODIFIED_1::PASTA_SEAL
 
 }
 
+//Respresents the server provider
 void csp(std::vector<Ciphertext> enc_key,
  std::vector<uint64_t> cipherData,PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInstance){
 
@@ -106,6 +107,7 @@ void csp(std::vector<Ciphertext> enc_key,
 
 }
 
+//Represents the user
 void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInstance){
     chrono::high_resolution_clock::time_point start1, start2, start3, end1, end2, end3;
     chrono::milliseconds diff1, diff2, diff3;
@@ -130,13 +132,10 @@ void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInsta
 
         diff1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1);
         total_symmetric_enc_time += diff1.count(); 
-
-        
         
 
         //Encryt user data with HE and the time it takes
         start3 = chrono::high_resolution_clock::now();
-
         
         enc_key = pastaSealInstance.encrypt_key_2(userData, config::USE_BATCH);
         
@@ -162,9 +161,10 @@ void client(vector<uint64_t> ssk, PASTA_3_MODIFIED_1::PASTA_SEAL& pastaSealInsta
     cout << "Total symmetric encryption time: " << total_symmetric_enc_time / 1 << endl;
     cout << "Total key encryption time: " << total_key_enc_time / 1 << endl;
     cout << "Total HE time: " << total_only_HE_time / 1 << endl;
-    //csp(enc_key, cipherData, pastaSealInstance);
-
     //Call CSP with enc_key and cipher data
+    csp(enc_key, cipherData, pastaSealInstance);
+
+    
     
 
     
@@ -179,6 +179,8 @@ int main(){
     CSP csp;
     chrono::high_resolution_clock::time_point start1, start2, start3, start4, end1, end2, end3, end4;
     chrono::milliseconds diff1, diff2, diff3, diff4;
+
+    //Create the encryotion parametres
     EncryptionParameters params(scheme_type::bfv);
     size_t pol_mod_degree = 16384;
     params.set_poly_modulus_degree(pol_mod_degree);
@@ -202,8 +204,6 @@ int main(){
     
     end1 = chrono::high_resolution_clock::now();
     diff1 = chrono::duration_cast<chrono::milliseconds>(end1 - start1);
-
-    //Private key
 
 
     //Some HE keys for CSP    
@@ -266,6 +266,8 @@ int main(){
     user.ssk = s_secret_key;
     PASTA_3_MODIFIED_1::PASTA_SEAL pastaSealInstance(context, analyst_he_public_key, CSP_secret_key,
     analyst_he_relin_keys, analyst_he_galois_keys);
+
+    //Call the user with ssk
     client(s_secret_key, pastaSealInstance);
     return 0;
 }
